@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Page</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2025.7.3/core.css">
+    <script type="module" src="https://pyscript.net/releases/2025.7.3/core.js"></script>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #ffdab9;
+            font-family: "DynaPuff", system-ui;
+            color: #f08080;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar */
+        nav {
+            background-color: #f08080;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h2 {
+            color: #fff8f0;
+            font-weight: bold;
+            font-size: 28px;
+        }
+
+        nav a {
+            color: #fff8f0;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffda79;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            max-width: 900px;
+            background-color: #fff8f0;
+            margin: 60px auto;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 5px 5px 15px rgba(240, 128, 128, 0.3);
+            text-align: center;
+        }
+
+        h1 {
+            color: #f08080;
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: #ffb4a2;
+            font-size: 25px;
+            margin-bottom: 25px;
+        }
+
+        .info-box {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            background-color: #ffeadb;
+            border: 2px solid #f4a7a7;
+            border-radius: 15px;
+            width: 250px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 3px 3px 10px rgba(240, 128, 128, 0.2);
+        }
+
+        .info-card h4 {
+            color: #f08080;
+            margin-bottom: 10px;
+        }
+
+        .info-card p {
+            color: #f4a7a7;
+            font-size: 16px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #f08080;
+            color: #fff8f0;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <h2>Serindipity</h2>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="order.html">Order Now</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <div class="contact-container">
+        <h1>Contact Us</h1>
+        <h3>We’d love to hear from you!</h3>
+
+        <div class="info-box">
+            <div class="info-card">
+                <h4> Our Location</h4>
+                <p>123 Pastry Street <br> GH San Juan, Philippines</p>
+            </div>
+
+            <div class="info-card">
+                <h4> Phone Numbers</h4>
+                <p>Main: (02) 234-5678<br>Mobile: 0912-444-9102</p>
+            </div>
+
+            <div class="info-card">
+                <h4> Email Addresses</h4>
+                <p>obmc@serindipity.com<br>help@serindipity.com</p>
+            </div>
+        </div>
+
+        <p style="margin-top: 30px; color: #f08080;">
+             Open Daily: 8:00 AM - 8:00 PM
+        </p>
+    </div>
+    <br>
+    <footer>
+        &copy; 2025 Serindipity | Atasha Ko | 10-Sapphire
+    </footer>
+</body>
+</html>

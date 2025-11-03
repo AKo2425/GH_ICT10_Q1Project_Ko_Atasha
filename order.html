@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Food Ordering System</title>
+
+    <!-- PyScript -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2025.7.3/core.css">
+    <script type="module" src="https://pyscript.net/releases/2025.7.3/core.js"></script>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #ffdab9;
+            color: #f08080;
+            font-family: "DynaPuff", system-ui;
+            margin: 0;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #f08080;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(240, 128, 128, 0.3);
+        }
+
+        nav h2 {
+            color: #fff8f0;
+            font-weight: bold;
+            font-size: 28px;
+            margin: 0;
+        }
+
+        nav div {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #fff8f0;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffda79;
+        }
+
+        h1 {
+            color: #f08080;
+            font-size: 45px;
+            margin-top: 50px;
+        }
+
+        h3 {
+            color: #ffb4a2;
+            font-size: 30px;
+        }
+
+        label {
+            display: block;
+            font-size: 20px;
+            margin: 8px;
+            color: #f08080;
+        }
+
+        input[type="checkbox"] {
+            transform: scale(1.3);
+            margin-right: 8px;
+        }
+
+        input[type="text"] {
+            display: block;
+            margin: 8px auto;
+            padding: 10px;
+            border-radius: 8px;
+            border: 2px solid #f08080;
+            width: 280px;
+            font-family: "DynaPuff", system-ui;
+            font-size: 16px;
+        }
+
+
+        button {
+            margin-top: 15px;
+            background-color: #ffda79;
+            color: #fff8f0;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-family: "DynaPuff", system-ui;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #ffe08a;
+            color: #f08080;
+        }
+
+ 
+        #output {
+            margin-top: 25px;
+            background-color: #fff8f0;
+            color: #f08080;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 3px 3px 10px rgba(240, 128, 128, 0.3);
+            text-align: left;
+        }
+
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #f08080;
+            color: #fff8f0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h2>Serindipity</h2>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="order.html">Order Now</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <h1>Food Ordering System</h1>
+    <h3>Menu</h3>
+    <p>Select your food items below:</p>
+
+    <div id="menu">
+        <label><input type="checkbox" value="100" id="macarons">Macarons - ₱100</label>
+        <label><input type="checkbox" value="120" id="crepe">Crêpe - ₱120</label>
+        <label><input type="checkbox" value="125" id="americano">Iced Americano - ₱125</label>
+        <label><input type="checkbox" value="130" id="latte">Spanish Latte - ₱130</label>
+    </div>
+
+    <h3>Customer Details</h3>
+    <input type="text" id="name" placeholder="Enter your name">
+    <input type="text" id="address" placeholder="Enter your address">
+    <input type="text" id="contact" placeholder="Enter your contact number">
+
+    <button py-click="create_order">Place Order</button>
+
+    <div id="output"></div>
+
+
+    <py-script>
+from pyscript import document
+
+def create_order(event=None):
+    items = []
+    total = 0
+
+    foods = {
+        "macarons": 100,
+        "crepe": 120,
+        "americano": 125,
+        "latte": 130
+    }
+
+    for food, price in foods.items():
+        checkbox = document.getElementById(food)
+        if checkbox.checked:
+            items.append(f"{food.replace('_', ' ').title()} - ₱{price}")
+            total += price
+
+    name = document.getElementById("name").value.strip()
+    address = document.getElementById("address").value.strip()
+    contact = document.getElementById("contact").value.strip()
+
+    if not name or not address or not contact:
+        document.getElementById("output").innerHTML = "<b>Please fill out all customer details!</b>"
+        return
+    if not items:
+        document.getElementById("output").innerHTML = "<b>Please select at least one item!</b>"
+        return
+
+    summary = (
+        f"<b>Order Summary</b><br><br>"
+        f"<b>Name:</b> {name}<br>"
+        f"<b>Address:</b> {address}<br>"
+        f"<b>Contact:</b> {contact}<br><br>"
+        f"<b>Ordered Items:</b><br>" + "<br>".join(items) + "<br><br>"
+        f"<b>Total Amount:</b> ₱{total:.2f}"
+    )
+
+    document.getElementById("output").innerHTML = summary
+    </py-script>
+<br>
+    <footer>
+        &copy; 2025 Serindipity | Atasha Ko | 10-Sapphire
+    </footer>
+</body>
+</html>
